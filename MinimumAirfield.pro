@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,15 +25,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        dialog.cpp \
-    minimums.cpp
+    maindialog.cpp \
+    minimum.cpp
 
 HEADERS += \
-        dialog.h \
-    minimums.h
+    maindialog.h \
+    minimum.h
 
 FORMS += \
-        dialog.ui
+    maindialog.ui
 
 RESOURCES += \
     minimumairfield.qrc
+
+TRANSLATIONS = minimumairfield_ru.ts

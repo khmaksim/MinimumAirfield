@@ -1,0 +1,51 @@
+<!DOCTYPE QPH>
+<QPH language="ru_RU">
+<phrase>
+    <source>Failed to get list of obstacles!</source>
+    <target>Не удалось получит список препятствий!</target>
+</phrase>
+<phrase>
+    <source>Minimums</source>
+    <target>Минимумы</target>
+</phrase>
+<phrase>
+    <source>Category aircraft</source>
+    <target>Категория ВС</target>
+</phrase>
+<phrase>
+    <source>Time of day</source>
+    <target>Время суток</target>
+</phrase>
+<phrase>
+    <source>OVI</source>
+    <target>ОВИ</target>
+</phrase>
+<phrase>
+    <source>with OVI (OMI)</source>
+    <target>с ОВИ (ОМИ)</target>
+</phrase>
+<phrase>
+    <source>with out OVI (OMI)</source>
+    <target>без ОВИ (ОМИ)</target>
+</phrase>
+<phrase>
+    <source>Minimum takeoff</source>
+    <target>Минимум для взлёта</target>
+</phrase>
+<phrase>
+    <source>Lights centerline</source>
+    <target>Огни осевой линии</target>
+</phrase>
+<phrase>
+    <source>with lights</source>
+    <target>с огнями</target>
+</phrase>
+<phrase>
+    <source>with out lights</source>
+    <target>без огней</target>
+</phrase>
+<phrase>
+    <source>Name airfield</source>
+    <target>Название аэродрома</target>
+</phrase>
+</QPH>

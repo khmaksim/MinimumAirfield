@@ -18,12 +18,12 @@
         <translation type="vanished">Время суток</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="152"/>
+        <location filename="maindialog.ui" line="75"/>
         <source>day</source>
         <translation>день</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="159"/>
+        <location filename="maindialog.ui" line="88"/>
         <source>night</source>
         <translation>ночь</translation>
     </message>
@@ -74,8 +74,8 @@
         <translation>ILS</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="348"/>
-        <location filename="maindialog.ui" line="574"/>
+        <location filename="maindialog.ui" line="407"/>
+        <location filename="maindialog.ui" line="633"/>
         <location filename="maindialog.cpp" line="23"/>
         <source>PSP</source>
         <translation>ПСП</translation>
@@ -86,15 +86,15 @@
         <translation>РМС-ПСП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="355"/>
-        <location filename="maindialog.ui" line="584"/>
+        <location filename="maindialog.ui" line="414"/>
+        <location filename="maindialog.ui" line="643"/>
         <location filename="maindialog.cpp" line="25"/>
         <source>RSP+OSP</source>
         <translation>РСП+ОСП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="327"/>
-        <location filename="maindialog.ui" line="589"/>
+        <location filename="maindialog.ui" line="386"/>
+        <location filename="maindialog.ui" line="648"/>
         <location filename="maindialog.cpp" line="26"/>
         <source>RSP</source>
         <translation>РСП</translation>
@@ -132,63 +132,63 @@
         <translation type="vanished">без огней осевой линии</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="301"/>
+        <location filename="maindialog.ui" line="360"/>
         <source>Landing</source>
         <translation>Посадка</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="307"/>
+        <location filename="maindialog.ui" line="366"/>
         <source>Landing system</source>
         <translation>Система захода на посадку</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="313"/>
-        <location filename="maindialog.ui" line="569"/>
+        <location filename="maindialog.ui" line="372"/>
+        <location filename="maindialog.ui" line="628"/>
         <source>SP, ILS, Katet</source>
         <translation>СП, ИЛС, Катет</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="320"/>
+        <location filename="maindialog.ui" line="379"/>
         <source>RMS - PSP</source>
         <translation>РМС - ПСП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="334"/>
-        <location filename="maindialog.ui" line="599"/>
+        <location filename="maindialog.ui" line="393"/>
+        <location filename="maindialog.ui" line="658"/>
         <source>OPRS</source>
         <translation>ОПРС</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="341"/>
+        <location filename="maindialog.ui" line="400"/>
         <source>KRM system ILS</source>
         <translation>КРМ системы ИЛС</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="362"/>
-        <location filename="maindialog.ui" line="594"/>
+        <location filename="maindialog.ui" line="421"/>
+        <location filename="maindialog.ui" line="653"/>
         <location filename="maindialog.cpp" line="27"/>
         <source>OSP</source>
         <translation>ОСП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="369"/>
-        <location filename="maindialog.ui" line="604"/>
+        <location filename="maindialog.ui" line="428"/>
+        <location filename="maindialog.ui" line="663"/>
         <source>VOR</source>
         <translation>VOR</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="376"/>
-        <location filename="maindialog.ui" line="609"/>
+        <location filename="maindialog.ui" line="435"/>
+        <location filename="maindialog.ui" line="668"/>
         <source>tools reverse start</source>
         <translation>средства обратного старта</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="386"/>
+        <location filename="maindialog.ui" line="445"/>
         <source>OCH:</source>
         <translation>OCH:</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="412"/>
+        <location filename="maindialog.ui" line="471"/>
         <source>Characteristics airfield</source>
         <translation>Характеристики аэродрома</translation>
     </message>
@@ -197,17 +197,17 @@
         <translation type="vanished">расстояние до огней приближения (от порога ВПП):</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="480"/>
+        <location filename="maindialog.ui" line="539"/>
         <source>absence of approach lighting system</source>
         <translation>отсутствие огней приближения</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="444"/>
+        <location filename="maindialog.ui" line="503"/>
         <source>Glidepath angle:</source>
         <translation>Угол наклона глиссады:</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="494"/>
+        <location filename="maindialog.ui" line="553"/>
         <source>absence of lights сentral row</source>
         <translation>отсутствие огней центрального ряда</translation>
     </message>
@@ -216,171 +216,185 @@
         <translation type="vanished">Расстояние до ОПРС (от порога ВПП):</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="487"/>
+        <location filename="maindialog.ui" line="546"/>
         <source>absence of the axial row of lights</source>
         <translation>отсутствие осевого ряда огней</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="467"/>
+        <location filename="maindialog.ui" line="526"/>
         <source>replacement of the runway parallel to the main runway</source>
         <translation>запасная ВПП параллельная основной ВПП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="51"/>
+        <location filename="maindialog.ui" line="216"/>
         <source>presence of an alternate airport</source>
         <oldsource>presence of alternate</oldsource>
         <translation>наличие запасного аэродрома </translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="58"/>
+        <location filename="maindialog.ui" line="209"/>
         <source>marking a centerline across the length of the runway</source>
         <translation>маркировка осевой линии по всей длине ВПП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="67"/>
+        <location filename="maindialog.ui" line="225"/>
         <source>The relative height of obstacles exceeding the surface of the take-off (in meters) from MK1</source>
         <translation>Относительная высота препятствия, превышающего поверхности взлета (в метрах) c МК 1</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="80"/>
-        <location filename="maindialog.ui" line="103"/>
+        <location filename="maindialog.ui" line="238"/>
+        <location filename="maindialog.ui" line="261"/>
         <source> m</source>
         <translation>м</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="90"/>
+        <location filename="maindialog.ui" line="248"/>
         <source>from MK2</source>
         <translation>с МК 2</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="128"/>
+        <location filename="maindialog.ui" line="51"/>
         <source>Light-signal equipment of the runway</source>
         <translation>Свето-сигнальное оборудование ВПП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="187"/>
+        <location filename="maindialog.ui" line="122"/>
         <source>with side runway lights</source>
         <translation>при наличии боковых огней ВПП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="194"/>
+        <location filename="maindialog.ui" line="135"/>
         <source>without side runway lights (OVI, OMI)</source>
         <translation>без боковых огней ВПП (ОВИ, ОМИ)</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="204"/>
+        <location filename="maindialog.ui" line="151"/>
         <source>without lights runway centreline</source>
         <translation>без огней осевой линии ВПП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="211"/>
+        <location filename="maindialog.ui" line="164"/>
         <source>with lights runway centreline day(night)</source>
         <translation>С огнями осевой линии ВПП день(ночь)</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="223"/>
         <source>Visibility on the runway (m):</source>
         <oldsource>Visibility on the runway (meter):</oldsource>
-        <translation>Видимость на ВПП (м):</translation>
+        <translation type="vanished">Видимость на ВПП (м):</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="277"/>
+        <location filename="maindialog.ui" line="180"/>
         <source>Type runway</source>
         <translation>Тип ВПП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="283"/>
+        <location filename="maindialog.ui" line="186"/>
         <source>IVPP</source>
         <translation>ИВПП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="290"/>
+        <location filename="maindialog.ui" line="199"/>
         <source>GVPP</source>
         <translation>ГВПП</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="431"/>
-        <location filename="maindialog.ui" line="454"/>
+        <location filename="maindialog.ui" line="288"/>
+        <source>Visibility on the runway (m)*:</source>
+        <translation>Видимость на ВПП (м)*:</translation>
+    </message>
+    <message>
+        <location filename="maindialog.ui" line="342"/>
+        <source>* in the absence of marking and lighting equipments GWP, in cases where minimum landing L &gt; 2000 m, minimum for take-off may be determined according to L = 2000 m</source>
+        <translation>* при отсутствии маркировки и светооборудования ГВПП, в случаях когда минимум для посадки L &gt; 2000 м, минимум для взлёта может устанавливаться по L = 2000 м</translation>
+    </message>
+    <message>
+        <location filename="maindialog.ui" line="352"/>
+        <source>running meter (data logger) range of visibility on the runway</source>
+        <translation>работающий измеритель (регистратор) дальности видимости на ВПП</translation>
+    </message>
+    <message>
+        <location filename="maindialog.ui" line="490"/>
+        <location filename="maindialog.ui" line="513"/>
         <source>From the runway threshold</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="434"/>
+        <location filename="maindialog.ui" line="493"/>
         <source>Distance to the lights approaching:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="457"/>
+        <location filename="maindialog.ui" line="516"/>
         <source>Range of the NDB:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="504"/>
+        <location filename="maindialog.ui" line="563"/>
         <source>Characteristics RTS</source>
         <translation>Характеристики РТС</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="510"/>
+        <location filename="maindialog.ui" line="569"/>
         <source>1 category</source>
         <translation>1 категория</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="517"/>
+        <location filename="maindialog.ui" line="576"/>
         <source>2 category</source>
         <translation>2 категория</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="524"/>
+        <location filename="maindialog.ui" line="583"/>
         <source>RMS 1</source>
         <translation>РМС 1</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="531"/>
+        <location filename="maindialog.ui" line="590"/>
         <source>RMS 2</source>
         <translation>РМС 2</translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="554"/>
+        <location filename="maindialog.ui" line="613"/>
         <source>Results</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="564"/>
+        <location filename="maindialog.ui" line="623"/>
         <source>Cat</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="579"/>
+        <location filename="maindialog.ui" line="638"/>
         <source>RMS -PSP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="625"/>
+        <location filename="maindialog.ui" line="684"/>
         <source>A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="630"/>
+        <location filename="maindialog.ui" line="689"/>
         <source>B</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="635"/>
+        <location filename="maindialog.ui" line="694"/>
         <source>C</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="640"/>
+        <location filename="maindialog.ui" line="699"/>
         <source>D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="645"/>
+        <location filename="maindialog.ui" line="704"/>
         <source>E</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.ui" line="653"/>
+        <location filename="maindialog.ui" line="712"/>
         <source>Category aircraft:</source>
         <translation>Категория воздушного судна:</translation>
     </message>

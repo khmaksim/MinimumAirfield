@@ -17,6 +17,84 @@
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Name airfield:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="nameAirfieldLineEdit"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Index airfield:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="indexAirfieldLineEdit"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Number of the threshold:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="numberThresholdOneLineEdit"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>/</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="numberThresholdSecondLineEdit"/>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Unit:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="unitComboBox">
+       <item>
+        <property name="text">
+         <string>meter</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>foot</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Category aircraft:</string>
@@ -61,37 +139,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>Name airfield:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_12">
-       <property name="text">
-        <string>Marking airfield:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEdit_3"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_13">
-       <property name="text">
-        <string>Number of the threshold:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEdit_4"/>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
+      <spacer name="horizontalSpacer_6">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -103,30 +151,9 @@
        </property>
       </spacer>
      </item>
-     <item>
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>Unit:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="unitComboBox">
-       <item>
-        <property name="text">
-         <string>meter</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>foot</string>
-        </property>
-       </item>
-      </widget>
-     </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
       <number>0</number>
@@ -143,7 +170,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_8">
           <item row="2" column="0" colspan="2">
-           <widget class="QFrame" name="frame_2">
+           <widget class="QFrame" name="frameTimeDay">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -161,7 +188,7 @@
               <number>0</number>
              </property>
              <item row="0" column="0">
-              <widget class="QRadioButton" name="radioButton_17">
+              <widget class="QRadioButton" name="dayRadioButton">
                <property name="text">
                 <string>day</string>
                </property>
@@ -174,7 +201,7 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QRadioButton" name="radioButton_18">
+              <widget class="QRadioButton" name="nightRadioButton">
                <property name="text">
                 <string>night</string>
                </property>
@@ -190,7 +217,7 @@
            </widget>
           </item>
           <item row="1" column="0" colspan="2">
-           <widget class="QFrame" name="frame">
+           <widget class="QFrame" name="frameSideLight">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -208,7 +235,7 @@
               <number>0</number>
              </property>
              <item row="0" column="0">
-              <widget class="QRadioButton" name="radioButton_15">
+              <widget class="QRadioButton" name="withSideLightsRadioButton">
                <property name="text">
                 <string>with side runway lights</string>
                </property>
@@ -221,7 +248,7 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QRadioButton" name="radioButton_16">
+              <widget class="QRadioButton" name="withoutSideLightsRadioButton">
                <property name="text">
                 <string>without side runway lights (OVI, OMI)</string>
                </property>
@@ -237,7 +264,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QRadioButton" name="radioButton_13">
+           <widget class="QRadioButton" name="withoutLightsCenterlineRadioButton">
             <property name="text">
              <string>without lights runway centreline</string>
             </property>
@@ -250,7 +277,7 @@
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="QRadioButton" name="radioButton_14">
+           <widget class="QRadioButton" name="withLightsCenterlineRadioButton">
             <property name="text">
              <string>with lights runway centreline day(night)</string>
             </property>
@@ -272,7 +299,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="0">
-           <widget class="QRadioButton" name="radioButton_11">
+           <widget class="QRadioButton" name="ivppRadioButton">
             <property name="text">
              <string>IVPP</string>
             </property>
@@ -285,7 +312,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QRadioButton" name="radioButton_12">
+           <widget class="QRadioButton" name="gvppRadioButton">
             <property name="text">
              <string>GVPP</string>
             </property>
@@ -294,17 +321,17 @@
          </layout>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QCheckBox" name="noLightsCenterlineCheckBox">
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="alternateAirportCheckBox">
          <property name="text">
-          <string>marking a centerline across the length of the runway</string>
+          <string>presence of an alternate airport</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QCheckBox" name="checkBox_7">
+       <item row="3" column="0" colspan="2">
+        <widget class="QCheckBox" name="markingCenterlineCheckBox">
          <property name="text">
-          <string>presence of an alternate airport</string>
+          <string>marking a centerline across the length of the runway</string>
          </property>
         </widget>
        </item>
@@ -316,12 +343,12 @@
             <string>The relative height of obstacles exceeding the surface of the take-off (in meters) from MK1</string>
            </property>
            <property name="buddy">
-            <cstring>heightObstacleDoubleSpinBox</cstring>
+            <cstring>mk1HightObstacleDoubleSpinBox</cstring>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QDoubleSpinBox" name="heightObstacleDoubleSpinBox">
+          <widget class="QDoubleSpinBox" name="mk1HightObstacleDoubleSpinBox">
            <property name="buttonSymbols">
             <enum>QAbstractSpinBox::PlusMinus</enum>
            </property>
@@ -341,7 +368,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QDoubleSpinBox" name="doubleSpinBox">
+          <widget class="QDoubleSpinBox" name="mk2HightObstacleDoubleSpinBox">
            <property name="buttonSymbols">
             <enum>QAbstractSpinBox::PlusMinus</enum>
            </property>
@@ -381,12 +408,15 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit">
+          <widget class="QLineEdit" name="visibilityLineEdit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="text">
+            <string>0</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -415,7 +445,7 @@
         </layout>
        </item>
        <item row="2" column="0">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="dataLoggerCheckBox">
          <property name="text">
           <string>running meter (data logger) range of visibility on the runway</string>
          </property>

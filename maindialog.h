@@ -7,8 +7,6 @@ namespace Ui {
     class MainDialog;
 }
 
-class Minimum;
-class QStandardItemModel;
 class MainDialog : public QDialog
 {
         Q_OBJECT
@@ -19,20 +17,13 @@ class MainDialog : public QDialog
 
     private:
         Ui::MainDialog *ui;
-        QStandardItemModel *model;
-        Minimum *minimum;
 
-        void getListAirfields();
         void readSettings();
         void writeSettings();
-        bool connectDatabase();
-        void fillTable();
+        int round(double height, int base);
 
     private slots:
-        void setLights();
-        void setTimeOfDay();
-        void setOvi();
-        void getListObstaclesByAirfield(int);
+        void computeTakeoffMinimum();
 };
 
 #endif // MAINDIALOG_H

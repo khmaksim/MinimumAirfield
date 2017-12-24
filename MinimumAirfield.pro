@@ -38,4 +38,10 @@ FORMS += \
 RESOURCES += \
     minimumairfield.qrc
 
+RC_ICONS = appico.ico
+RC_FILE = app.rc
+
 TRANSLATIONS = minimumairfield_ru.ts
+
+DISTFILES += \
+    app.rc

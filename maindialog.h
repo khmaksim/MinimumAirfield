@@ -2,6 +2,7 @@
 #define MAINDIALOG_H
 
 #include <QtWidgets/QDialog>
+#include <QtCore/QMap>
 
 namespace Ui {
     class MainDialog;
@@ -17,6 +18,8 @@ class MainDialog : public QDialog
 
     private:
         Ui::MainDialog *ui;
+        QStringList numbersThresholds;
+        QMap<QString, int> categoryAircraft;
 
         void readSettings();
         void writeSettings();
@@ -24,6 +27,7 @@ class MainDialog : public QDialog
 
     private slots:
         void computeTakeoffMinimum();
+        void setNumbersThresholds(const QString &text);
 };
 
 #endif // MAINDIALOG_H

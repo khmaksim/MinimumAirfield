@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     maindialog.cpp \
-    minimum.cpp
+    minimum.cpp \
+    qgroupheaderview.cpp
 
 HEADERS += \
     maindialog.h \
-    minimum.h
+    minimum.h \
+    qgroupheaderview.h
 
 FORMS += \
     maindialog.ui

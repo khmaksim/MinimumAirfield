@@ -28,6 +28,7 @@ class MainDialog : public QDialog
     private slots:
         void computeTakeoffMinimum();
         void setNumbersThresholds(const QString &text);
+        void reset();
 };
 
 #endif // MAINDIALOG_H

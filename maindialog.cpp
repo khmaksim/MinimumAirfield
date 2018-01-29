@@ -39,28 +39,17 @@ MainDialog::MainDialog(QWidget *parent) :
     ui->minimumTakeoffTableWidget->setItem(2, 1, new QTableWidgetItem(tr("Day")));
     ui->minimumTakeoffTableWidget->setItem(3, 1, new QTableWidgetItem(tr("Night")));
 
-    QObjectList checkTypeList = ui->categoryAircraftGroupBox->children();
-    for (int i = 0; i < checkTypeList.size(); i++) {
-        QCheckBox *obj = qobject_cast<QCheckBox*>(checkTypeList.at(i));
-        if (obj)
-            connect(obj, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
-    }
-
     readSettings();
 
     connect(ui->numberThreshold1LineEdit, SIGNAL(textChanged(QString)), this, SLOT(setNumbersThresholds(QString)));
     connect(ui->numberThreshold2LineEdit, SIGNAL(textChanged(QString)), this, SLOT(setNumbersThresholds(QString)));
-    connect(ui->mk1HightObstacleDoubleSpinBox, SIGNAL(valueChanged(double)), this, SLOT(computeTakeoffMinimum()));
-    connect(ui->mk2HightObstacleDoubleSpinBox, SIGNAL(valueChanged(double)), this, SLOT(computeTakeoffMinimum()));
-    connect(ui->ivppRadioButton, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
-    connect(ui->alternateAirportCheckBox, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
-    connect(ui->dataLoggerCheckBox, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
-    connect(ui->withLightsCenterlineRadioButton, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
-    connect(ui->withoutLightsCenterlineRadioButton, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
-    connect(ui->markingCenterlineCheckBox, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
-    connect(ui->withSideLightsRadioButton, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
-    connect(ui->withoutSideLightsRadioButton, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
+    connect(ui->numberThreshold1LineEdit, SIGNAL(textEdited(QString)), ui->threshold1LineEdit, SLOT(setText(QString)));
+    connect(ui->numberThreshold2LineEdit, SIGNAL(textEdited(QString)), ui->threshold2LineEdit, SLOT(setText(QString)));
     connect(ui->withoutLightsCenterlineRadioButton, SIGNAL(toggled(bool)), ui->frameSideLight, SLOT(setEnabled(bool)));
+    connect(ui->calculationButton, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
+    connect(ui->resetButton, SIGNAL(clicked(bool)), this, SLOT(reset()));
+    connect(ui->heightThreshold1LineEdit, SIGNAL(textEdited(QString)), ui->heightThreshold1DisplayLineEdit, SLOT(setText(QString)));
+    connect(ui->heightThreshold2LineEdit, SIGNAL(textEdited(QString)), ui->heightThreshold2DisplayLineEdit, SLOT(setText(QString)));
 }
 
 MainDialog::~MainDialog()
@@ -93,7 +82,7 @@ void MainDialog::computeTakeoffMinimum()
     double mk2Height = ui->mk2HightObstacleDoubleSpinBox->value();
     double visibility_obstacle1 = 0;      // видимость при наличии препятствия
     double visibility_obstacle2 = 0;      // видимость при наличии препятствия
-    double visibility = 0;               // видимость
+    double visibility = 0;                // видимость
     double visibility1 = 0;               // видимость
     double visibility2 = 0;               // видимость
     double height1 = 0;                   // высота нижней границы облаков
@@ -121,15 +110,6 @@ void MainDialog::computeTakeoffMinimum()
                         shift = 50;
                         break;
                 }
-                height1 = mk1Height + shift;
-                height1 = round(height1, 10);
-                visibility_obstacle1 = 6 * height1 + 300;
-                visibility_obstacle1 = round(visibility_obstacle1, 100);
-
-                height2 = mk2Height + shift;
-                height2 = round(height2, 10);
-                visibility_obstacle2 = 6 * height2 + 300;
-                visibility_obstacle2 = round(visibility_obstacle2, 100);
 
                 // Видимость
                 // ИВПП
@@ -227,9 +207,8 @@ void MainDialog::computeTakeoffMinimum()
                         }
                         // Без РДВ
                         else {
-                            // Без ОВИ (ОМИ)
-                            if (ui->withoutSideLightsRadioButton->isChecked()) {
-                                // День
+                            // С огнями осевой линии
+                            if (ui->withLightsCenterlineRadioButton->isChecked()) {
                                 if (isDay) {
                                     switch (indexCategoryAircraft) {
                                         case 0:
@@ -245,8 +224,7 @@ void MainDialog::computeTakeoffMinimum()
                                             break;
                                     }
                                 }
-                                // Ночь
-                                else if (!isDay) {
+                                else {
                                     switch (indexCategoryAircraft) {
                                         case 0:
                                             break;
@@ -259,6 +237,45 @@ void MainDialog::computeTakeoffMinimum()
                                         case 5:
                                             visibility = 700;
                                             break;
+                                    }
+                                }
+                            }
+                            // Без огней осевой линии с маркеровкрой осевой линии
+                            else if (ui->withoutLightsCenterlineRadioButton->isChecked() &&
+                                     ui->markingCenterlineCheckBox->isChecked()) {
+                                // Без ОВИ (ОМИ)
+                                if (ui->withoutSideLightsRadioButton->isChecked()) {
+                                    // День
+                                    if (isDay) {
+                                        switch (indexCategoryAircraft) {
+                                            case 0:
+                                                break;
+                                            case 1:
+                                            case 2:
+                                                visibility = 300;
+                                                break;
+                                            case 3:
+                                            case 4:
+                                            case 5:
+                                                visibility = 500;
+                                                break;
+                                        }
+                                    }
+                                    // Ночь
+                                    else if (!isDay) {
+                                        switch (indexCategoryAircraft) {
+                                            case 0:
+                                                break;
+                                            case 1:
+                                            case 2:
+                                                visibility = 300;
+                                                break;
+                                            case 3:
+                                            case 4:
+                                            case 5:
+                                                visibility = 700;
+                                                break;
+                                        }
                                     }
                                 }
                             }
@@ -360,9 +377,29 @@ void MainDialog::computeTakeoffMinimum()
                     }
                 }
 
-                visibility1 = visibility_obstacle1 < visibility ? visibility : visibility_obstacle1;
+                if (ui->presenceObstaclesGroupBox->isChecked() && (mk1Height > 0 || mk2Height > 0)) {
+                    double heightObstacle1 = mk1Height - ui->heightThreshold1LineEdit->text().toDouble();
+                    ui->deltaHightObstacleThreshold1LineEdit->setText(QString::number(heightObstacle1));
+                    height1 = heightObstacle1 + shift;
+                    height1 = round(height1, 10);
+                    visibility_obstacle1 = 6 * height1 + 300;
+                    visibility_obstacle1 = round(visibility_obstacle1, 100);
+
+                    double heightObstacle2 = mk2Height - ui->heightThreshold2LineEdit->text().toDouble();
+                    ui->deltaHightObstacleThreshold2LineEdit->setText(QString::number(heightObstacle2));
+                    height2 = heightObstacle2 + shift;
+                    height2 = round(height2, 10);
+                    visibility_obstacle2 = 6 * height2 + 300;
+                    visibility_obstacle2 = round(visibility_obstacle2, 100);
+
+                    visibility1 = visibility_obstacle1 < visibility ? visibility : visibility_obstacle1;
+                    visibility2 = visibility_obstacle2 < visibility ? visibility : visibility_obstacle2;
+                }
+                else {
+                    visibility1 = visibility2 = visibility;
+                }
+
                 QString result1 = QString("%1 x %2").arg(height1).arg(visibility1);
-                visibility2 = visibility_obstacle2 < visibility ? visibility : visibility_obstacle2;
                 QString result2 = QString("%1 x %2").arg(height2).arg(visibility2);
 
                 // if night then result insert to second row
@@ -372,8 +409,8 @@ void MainDialog::computeTakeoffMinimum()
 
                 switch (indexCategoryAircraft) {
                     case 0:
-                        ui->minimumTakeoffTableWidget->setItem(row, 2, new QTableWidgetItem(result1));
-                        ui->minimumTakeoffTableWidget->setItem(row + 2, 2, new QTableWidgetItem(result2));
+                        ui->minimumTakeoffTableWidget->setItem(row, 2, new QTableWidgetItem(tr("b/o x b/o")));
+                        ui->minimumTakeoffTableWidget->setItem(row + 2, 2, new QTableWidgetItem(tr("b/o x b/o")));
                         break;
                     case 1:
                         ui->minimumTakeoffTableWidget->setItem(row, 3, new QTableWidgetItem(result1));
@@ -421,41 +458,59 @@ void MainDialog::setNumbersThresholds(const QString &text)
         return;
 
     QString number = text;
+    QString calcNumber;
+
+    if (number.toInt() > 18)
+        calcNumber = QString::number(number.toInt() - 18);
+    else
+        calcNumber = QString::number(number.toInt() + 18);
+
+    if (calcNumber.length() < 2)
+        calcNumber = calcNumber.rightJustified(2, '0');
 
     if (sender()->objectName().contains("numberThreshold1")) {
         ui->numberThreshold2LineEdit->blockSignals(true);
-        number = QString::number(number.toInt() + 18);
-        ui->numberThreshold2LineEdit->setText(number);
+        ui->numberThreshold2LineEdit->setText(calcNumber);
         ui->numberThreshold2LineEdit->blockSignals(false);
+        emit ui->numberThreshold2LineEdit->textEdited(ui->numberThreshold2LineEdit->text());
     }
     else {
         ui->numberThreshold1LineEdit->blockSignals(true);
-        number = QString::number(number.toInt() - 18);
-        if (number.length() < 2)
-            number = number.rightJustified(2, '0');
-        ui->numberThreshold1LineEdit->setText(number);
+        ui->numberThreshold1LineEdit->setText(calcNumber);
         ui->numberThreshold1LineEdit->blockSignals(false);
+        emit ui->numberThreshold1LineEdit->textEdited(ui->numberThreshold1LineEdit->text());
     }
     ui->minimumTakeoffTableWidget->setItem(0, 0, new QTableWidgetItem(ui->numberThreshold1LineEdit->text()));
     ui->minimumTakeoffTableWidget->setItem(1, 0, new QTableWidgetItem(ui->numberThreshold1LineEdit->text()));
     ui->minimumTakeoffTableWidget->setItem(2, 0, new QTableWidgetItem(ui->numberThreshold2LineEdit->text()));
     ui->minimumTakeoffTableWidget->setItem(3, 0, new QTableWidgetItem(ui->numberThreshold2LineEdit->text()));
 
-    //    QStringList numbers = text.split("/");
-    //    QString num1 = "00";
-    //    QString num2 = "00";
-
-    //    if (numbersThresholds.isEmpty() || numbersThresholds.count() < 2)
-    //        numbersThresholds = numbers;
-
-    //    if (numbersThresholds[0] != numbers[0]) {
-    //        num1 = numbers[0];
-    //        num2 = QString().append(num1[1]).append(num1[0]);
-
-    //    }
-    //    if (numbersThresholds[1] != numbers[1]) {
-    //        num2 = numbers[1];
-    //        num2 = QString().append(num2[1]).append(num2[0]);
-    //    }
     return;
+}
+
+void MainDialog::reset()
+{
+    QObjectList checkTypeAircreaftList = ui->categoryAircraftGroupBox->children();
+    for (int i = 0; i < checkTypeAircreaftList.size(); i++) {
+        QCheckBox *obj = qobject_cast<QCheckBox*>(checkTypeAircreaftList.at(i));
+        if (obj)
+            obj->setChecked(false);
+    }
+    ui->alternateAirportCheckBox->setChecked(false);
+    ui->markingCenterlineCheckBox->setChecked(false);
+    ui->dataLoggerCheckBox->setChecked(false);
+    ui->presenceObstaclesGroupBox->setChecked(false);
+    ui->mk1HightObstacleDoubleSpinBox->clear();
+    ui->mk2HightObstacleDoubleSpinBox->clear();
+    ui->withLightsCenterlineRadioButton->setChecked(true);
+    ui->withSideLightsRadioButton->setChecked(true);
+    ui->ivppRadioButton->setChecked(true);
+
+    // clear table
+    for (int row = 0; row < 4; row++)
+        for (int col = 2; col < 8; col++) {
+            QTableWidgetItem *item = ui->minimumTakeoffTableWidget->item(row, col);
+            if (item)
+                item->setText("");
+        }
 }

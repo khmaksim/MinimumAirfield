@@ -45,11 +45,13 @@ MainDialog::MainDialog(QWidget *parent) :
     connect(ui->numberThreshold2LineEdit, SIGNAL(textChanged(QString)), this, SLOT(setNumbersThresholds(QString)));
     connect(ui->numberThreshold1LineEdit, SIGNAL(textEdited(QString)), ui->threshold1LineEdit, SLOT(setText(QString)));
     connect(ui->numberThreshold2LineEdit, SIGNAL(textEdited(QString)), ui->threshold2LineEdit, SLOT(setText(QString)));
+    connect(ui->numberThreshold1LineEdit, SIGNAL(textChanged(QString)), this, SLOT(setNumbersThresholdsIntoTable()));
+    connect(ui->numberThreshold2LineEdit, SIGNAL(textChanged(QString)), this, SLOT(setNumbersThresholdsIntoTable()));
+    connect(ui->markThreshold1LineEdit, SIGNAL(textChanged(QString)), this, SLOT(setNumbersThresholdsIntoTable()));
+    connect(ui->markThreshold2LineEdit, SIGNAL(textChanged(QString)), this, SLOT(setNumbersThresholdsIntoTable()));
     connect(ui->withoutLightsCenterlineRadioButton, SIGNAL(toggled(bool)), ui->frameSideLight, SLOT(setEnabled(bool)));
     connect(ui->calculationButton, SIGNAL(clicked(bool)), this, SLOT(computeTakeoffMinimum()));
     connect(ui->resetButton, SIGNAL(clicked(bool)), this, SLOT(reset()));
-    connect(ui->heightThreshold1LineEdit, SIGNAL(textEdited(QString)), ui->heightThreshold1DisplayLineEdit, SLOT(setText(QString)));
-    connect(ui->heightThreshold2LineEdit, SIGNAL(textEdited(QString)), ui->heightThreshold2DisplayLineEdit, SLOT(setText(QString)));
 }
 
 MainDialog::~MainDialog()
@@ -376,31 +378,45 @@ void MainDialog::computeTakeoffMinimum()
                         // минимумы для взлёта == минимумам для посадки
                     }
                 }
+                QString result1 = QString();
+                QString result2 = QString();
 
-                if (ui->presenceObstaclesGroupBox->isChecked() && (mk1Height > 0 || mk2Height > 0)) {
-                    double heightObstacle1 = mk1Height - ui->heightThreshold1LineEdit->text().toDouble();
-                    ui->deltaHightObstacleThreshold1LineEdit->setText(QString::number(heightObstacle1));
-                    height1 = heightObstacle1 + shift;
-                    height1 = round(height1, 10);
-                    visibility_obstacle1 = 6 * height1 + 300;
-                    visibility_obstacle1 = round(visibility_obstacle1, 100);
+                double heightObstacle1 = mk1Height - ui->heightThreshold1DoubleSpinBox->value();
+                double heightObstacle2 = mk2Height - ui->heightThreshold2DoubleSpinBox->value();
 
-                    double heightObstacle2 = mk2Height - ui->heightThreshold2LineEdit->text().toDouble();
-                    ui->deltaHightObstacleThreshold2LineEdit->setText(QString::number(heightObstacle2));
-                    height2 = heightObstacle2 + shift;
-                    height2 = round(height2, 10);
-                    visibility_obstacle2 = 6 * height2 + 300;
-                    visibility_obstacle2 = round(visibility_obstacle2, 100);
-
-                    visibility1 = visibility_obstacle1 < visibility ? visibility : visibility_obstacle1;
-                    visibility2 = visibility_obstacle2 < visibility ? visibility : visibility_obstacle2;
+                if (ui->presenceObstaclesGroupBox->isChecked()) {
+                    if (mk1Height > 0 && heightObstacle1 > 0) {
+                        ui->deltaHightObstacleThreshold1LineEdit->setText(QString::number(heightObstacle1));
+                        height1 = heightObstacle1 + shift;
+                        height1 = round(height1, 10);
+                        visibility_obstacle1 = 6 * height1 + 300;
+                        visibility_obstacle1 = round(visibility_obstacle1, 100);
+                        visibility1 = visibility_obstacle1 < visibility ? visibility : visibility_obstacle1;
+                        result1 = QString("%1 x %2").arg(height1).arg(visibility1);
+                    }
+                    else {
+                        visibility1 = visibility;
+                        result1 = QString("%1 x %2").arg(tr("b/o")).arg(visibility2);
+                    }
+                    if (mk2Height > 0 && heightObstacle2 > 0) {
+                        ui->deltaHightObstacleThreshold2LineEdit->setText(QString::number(heightObstacle2));
+                        height2 = heightObstacle2 + shift;
+                        height2 = round(height2, 10);
+                        visibility_obstacle2 = 6 * height2 + 300;
+                        visibility_obstacle2 = round(visibility_obstacle2, 100);
+                        visibility2 = visibility_obstacle2 < visibility ? visibility : visibility_obstacle2;
+                        result2 = QString("%1 x %2").arg(height2).arg(visibility2);
+                    }
+                    else {
+                        visibility2 = visibility;
+                        result2 = QString("%1 x %2").arg(tr("b/o")).arg(visibility2);
+                    }
                 }
                 else {
                     visibility1 = visibility2 = visibility;
+                    result1 = QString("%1 x %2").arg(tr("b/o")).arg(visibility1);
+                    result2 = QString("%1 x %2").arg(tr("b/o")).arg(visibility2);
                 }
-
-                QString result1 = QString("%1 x %2").arg(height1).arg(visibility1);
-                QString result2 = QString("%1 x %2").arg(height2).arg(visibility2);
 
                 // if night then result insert to second row
                 int row = 0;
@@ -480,12 +496,14 @@ void MainDialog::setNumbersThresholds(const QString &text)
         ui->numberThreshold1LineEdit->blockSignals(false);
         emit ui->numberThreshold1LineEdit->textEdited(ui->numberThreshold1LineEdit->text());
     }
-    ui->minimumTakeoffTableWidget->setItem(0, 0, new QTableWidgetItem(ui->numberThreshold1LineEdit->text()));
-    ui->minimumTakeoffTableWidget->setItem(1, 0, new QTableWidgetItem(ui->numberThreshold1LineEdit->text()));
-    ui->minimumTakeoffTableWidget->setItem(2, 0, new QTableWidgetItem(ui->numberThreshold2LineEdit->text()));
-    ui->minimumTakeoffTableWidget->setItem(3, 0, new QTableWidgetItem(ui->numberThreshold2LineEdit->text()));
+}
 
-    return;
+void MainDialog::setNumbersThresholdsIntoTable()
+{
+    ui->minimumTakeoffTableWidget->setItem(0, 0, new QTableWidgetItem(ui->numberThreshold1LineEdit->text().append(ui->markThreshold1LineEdit->text())));
+    ui->minimumTakeoffTableWidget->setItem(1, 0, new QTableWidgetItem(ui->numberThreshold1LineEdit->text().append(ui->markThreshold1LineEdit->text())));
+    ui->minimumTakeoffTableWidget->setItem(2, 0, new QTableWidgetItem(ui->numberThreshold2LineEdit->text().append(ui->markThreshold2LineEdit->text())));
+    ui->minimumTakeoffTableWidget->setItem(3, 0, new QTableWidgetItem(ui->numberThreshold2LineEdit->text().append(ui->markThreshold2LineEdit->text())));
 }
 
 void MainDialog::reset()

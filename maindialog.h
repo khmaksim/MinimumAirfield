@@ -29,6 +29,7 @@ class MainDialog : public QDialog
         void computeTakeoffMinimum();
         void setNumbersThresholds(const QString &text);
         void reset();
+        void setNumbersThresholdsIntoTable();
 };
 
 #endif // MAINDIALOG_H
